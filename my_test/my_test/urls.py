@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ulearn.views import index_page
+from ulearn import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_page),
-
+    path('', views.index_page),
+    path('demand/', views.demand, name='demand')
 ]

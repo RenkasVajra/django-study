@@ -36,25 +36,7 @@
         </section>
         </div>
       </div>  
-      <nav class="main-nav">
-        <ul class="site-navigation">
-          <li class="site-navigation-item">
-            <a href="#">Главная</a>
-          </li>
-          <li class="site-navigation-item">
-            <a href="#">Востребованность</a>
-          </li>
-          <li class="site-navigation-item">
-            <a href="#">География</a>
-          </li>
-          <li class="site-navigation-item">
-            <a href="#">Навыки</a>
-          </li>
-          <li class="site-navigation-item">
-            <a href="#">Последние вакансии</a>
-          </li>
-        </ul>
-      </nav>
+      {% include 'includes/nav.html' %}
     </header>
     <main class="main-content">
       <section class="hero">
@@ -155,16 +137,7 @@
         </div>
         </article>
     </main>
-    <footer class="main-footer">
-      <div class="footer-container">
-        <div class="footer-column">
-          <p class="copyright">Технологии программирования</p>
-          <p class="copyright">Онищенко Андрей Андреевич</p>
-          <p class="copyright">РИ-220949</p>
-          <p class="copyright">©2024 Все права защищены</p>
-        </div>
-      </div>
-    </footer>
+    {% include 'includes/footer.html' %}
     <script src="{% static 'js/script.js' %}"></script>
   </body>
 </html>

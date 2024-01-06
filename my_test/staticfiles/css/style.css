@@ -282,15 +282,15 @@ body {
 }
 
 .hero h1 {
+  margin: 0 auto;
   margin-top: 0;
   margin-bottom: 40px;
-  margin-left: 70px;
   font-style: italic;
   font-weight: normal;
   font-size: 44px;
   line-height: 60px;
   text-transform: uppercase;
-  width: 400px;
+  width: 800px;
 }
 
 .hero img {
