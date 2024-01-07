@@ -1077,7 +1077,6 @@ body {
 .demand-container {
    padding: 0;
    display: grid;
-   grid-gap: 5rem;
    justify-content: center;
 }
 

@@ -94,7 +94,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
-  background-image: url("staticfiles/img/sun.svg");
+  background-image: url("../img/sun.svg");
   border: 1px solid #00c6bd;
   border-radius: 50%;
   cursor: pointer;
@@ -109,7 +109,7 @@ body {
 }
 
 .theme-button-light.active {
-  background-image: url("staticfiles/img/sun-light.svg");
+  background-image: url("../img/sun-light.svg");
 }
 
 .theme-button-dark {
@@ -117,7 +117,7 @@ body {
   width: 32px;
   height: 32px;
   padding: 0;
-  background-image: url("../staticfiles/img/moon.svg");
+  background-image: url("../img/moon.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
@@ -135,7 +135,7 @@ body {
 }
 
 .theme-button-dark.active {
-  background-image: url("../staticfiles/img/moon.svg");
+  background-image: url("../img/moon.svg");
 }
 
 .fonts {
@@ -282,15 +282,15 @@ body {
 }
 
 .hero h1 {
+  margin: 0 auto;
   margin-top: 0;
   margin-bottom: 40px;
-  margin-left: 70px;
   font-style: italic;
   font-weight: normal;
   font-size: 44px;
   line-height: 60px;
   text-transform: uppercase;
-  width: 400px;
+  width: 800px;
 }
 
 .hero img {
@@ -312,7 +312,6 @@ body {
 
 .blog-article-img {
   width: 600px;
-  position: absolute;
   object-fit: cover;
 }
 
@@ -1024,7 +1023,7 @@ body {
 }
 
 .page.dark .theme-button-light {
-  background-image: url("img/sun-light.svg");
+  background-image: url("../img/sun-light.svg");
 }
 
 .page.dark .logo img {
@@ -1073,4 +1072,68 @@ body {
 
 .page.dark .post-share {
   filter: brightness(20);
+}
+
+.demand-container {
+   padding: 0;
+   display: grid;
+   grid-gap: 5rem;
+   justify-content: center;
+}
+
+.demand-container h1 {
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.demand-container div {
+    margin: 0 auto;
+    justify-content: center;
+   display: block;
+}
+
+#one {
+ border-style: solid;
+ border-width:5px;
+ border-color: blue;
+ box-sizing: border-box;
+ width: 900px;
+ margin:5px;
+ padding:5px;
+}
+
+#two  {
+ border-style: solid;
+ border-color: green;
+ border-width:5px;
+ box-sizing: border-box;
+ width: 900px;
+ margin:5px;
+ padding:5px;
+}
+
+#three {
+ border-style: solid;
+ border-color: orange;
+ border-width:5px;
+ box-sizing: border-box;
+ width: 900px;
+ margin:5px;
+ padding:5px;
+}
+
+#four {
+ border-style: solid;
+ border-color: yellow;
+ border-width:5px;
+ box-sizing: border-box;
+ width: 900px;
+ margin:5px;
+ padding:5px;
+}
+
+.demand-header {
+    margin: 0 auto;
+    text-align: center;
 }
