@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-HELLO WORLD!
+{% load static %}
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+      <title>Специалист по ИБ</title>
+  </head>
+  <body class="page">
+  {% include 'includes/themes.html' %}
+  <main class="main-content">
+      <section class="hero">
+        <h1>Специалист по информационной безопасности</h1>
+      </section>
+      <div class="demand-container">
+        <h1>Графики и таблицы востребованности профессий</h1>
+        <div id="one">
+            <h2 class="demand-header">Динамика уровня зарплат по годам</h2>
+            <img src="{% static 'img/demand-graph1.png' %}">
+            <table class="table table-dark table-striped">
+                <thead>
+                  <tr>
+                    <th>Год</th>
+                    <th>Средняя зарплата</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <!-- jinja2 Technique -->
+                {% if d1 %}
+                {% for i in d1 %}
+                  <tr>
+                    <td>{{i.Год}}</td>
+                    <td>{{i.average_sal}}</td>
+                  </tr>
+                {% endfor %}
+                {% endif %}
+                </tbody>
+              </table>
+        </div>
+        <div id="two">
+            <h2 class="demand-header">Динамика количества вакансий по годам</h2>
+            <img src="{% static 'img/demand-graph2.png' %}">
+        </div>
+        <div id="three">
+            <h2 class="demand-header">Динамика уровня зарплат по годам для выбранной профессии</h2>
+            <img src="{% static 'img/demand-graph3.png' %}">
+        </div>
+        <div id="four">
+            <h2 class="demand-header">Динамика количества вакансий по годам для выбранной профессии</h2>
+            <img src="{% static 'img/demand-graph4.png' %}">
+        </div>
+    </div>
+  </main>
+      {% include 'includes/footer.html' %}
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

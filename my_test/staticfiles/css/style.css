@@ -1073,3 +1073,67 @@ body {
 .page.dark .post-share {
   filter: brightness(20);
 }
+
+.demand-container {
+   padding: 0;
+   display: grid;
+   grid-gap: 5rem;
+   justify-content: center;
+}
+
+.demand-container h1 {
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.demand-container div {
+    margin: 0 auto;
+    justify-content: center;
+   display: block;
+}
+
+#one {
+ border-style: solid;
+ border-width:5px;
+ border-color: blue;
+ box-sizing: border-box;
+ width: 900px;
+ margin:5px;
+ padding:5px;
+}
+
+#two  {
+ border-style: solid;
+ border-color: green;
+ border-width:5px;
+ box-sizing: border-box;
+ width: 900px;
+ margin:5px;
+ padding:5px;
+}
+
+#three {
+ border-style: solid;
+ border-color: orange;
+ border-width:5px;
+ box-sizing: border-box;
+ width: 900px;
+ margin:5px;
+ padding:5px;
+}
+
+#four {
+ border-style: solid;
+ border-color: yellow;
+ border-width:5px;
+ box-sizing: border-box;
+ width: 900px;
+ margin:5px;
+ padding:5px;
+}
+
+.demand-header {
+    margin: 0 auto;
+    text-align: center;
+}
