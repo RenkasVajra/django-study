@@ -2,7 +2,7 @@ import requests
 from datetime import datetime, timedelta
 from django.shortcuts import render
 from .models import Vacancy
-
+import json
 
 def index_page(request):
     return render(request, 'index.html')
@@ -21,6 +21,7 @@ def skills(request):
 
 
 def last_vacancies(request):
+    Vacancy.objects.all().delete()
     # API HH URL
     hh_api_url = 'https://api.hh.ru/vacancies'
 
@@ -44,24 +45,46 @@ def last_vacancies(request):
     # Отправка GET-запроса к API HH
     response = requests.get(hh_api_url, params=params, headers=headers)
     data = response.json()
-    vacancies_data = data.get('items', [])
-    print(data)
-    print(vacancies_data)
+    vacancies_data = json.loads(response.content)
     # Обработка данных о вакансиях
     vacancies_list = []
-    for vacancy_data in vacancies_data:
-        if not (None in vacancy_data.values()):
-            vacancy = Vacancy()
-            vacancy.title = vacancy_data.get('name')
-            vacancy.description = get_vacancy_description(vacancy_data.get('url'))
-            vacancy.skills = get_vacancy_skills(vacancy_data.get('url'))
-            vacancy.company = vacancy_data.get('employer').get('name')
-            vacancy.salary = vacancy_data.get('salary').get('from')
-            vacancy.area_name = vacancy_data.get('area').get('name')
-            vacancy.published_at = datetime.strptime(vacancy_data.get('published_at'), '%Y-%m-%dT%H:%M:%S%z')
+    for vacancy_data in vacancies_data['items']:
+        salary = vacancy_data['salary']
+        key_skills = get_vacancy_skills(vacancy_data['url'])
+        if salary:
+            if salary['from'] and salary['to']:
+                result_salary = f'{salary["from"]} - {salary["to"]} ({salary["currency"]})'
+            elif salary['from']:
+                result_salary = f'{salary["from"]}  ({salary["currency"]})'
+            else:
+                result_salary = f'{salary["to"]}  ({salary["currency"]})'
+        else:
+            result_salary = 'Зарплата не указана'
+        if key_skills:
+            result_skills = key_skills
+        else:
+            result_skills = 'Навыки не указаны'
+        vacancy = Vacancy()
+        vacancy.title = vacancy_data['name']
+        vacancy.description = get_vacancy_description(vacancy_data['url'])
+        vacancy.skills = result_skills
+        vacancy.company = vacancy_data['employer']['name']
+        vacancy.salary = result_salary
+        vacancy.area_name = vacancy_data['area']['name']
+        vacancy.published_at = datetime.strptime(vacancy_data['published_at'], '%Y-%m-%dT%H:%M:%S%z')
 
-            vacancies_list.append(vacancy)
-            print(vacancy.title, vacancy.salary)
+        vacancies_list.append(vacancy)
+        #print(vacancy.title, vacancy.salary)
+    print(vacancies_list)
+    for i in vacancies_list:
+        if Vacancy.objects.filter(
+                title=i.title,
+                description=i.description,
+                company=i.company,
+                skills=i.skills,
+                area_name=i.area_name
+        ).exists():
+            vacancies_list.remove(i)
     # Сохранение вакансий в базе данных
     Vacancy.objects.bulk_create(vacancies_list)
 
@@ -89,4 +112,3 @@ def get_vacancy_skills(vacancy_url):
         skills.append(skill_data['name'])
 
     return ', '.join(skills)
-
