@@ -51,11 +51,11 @@ def demand():
     vacancies_count_profession_by_year = vacancies_count_profession_by_year.rename(
         columns={'name': 'count'})  # кол-во вакансий по годам для профессии
     path = 'C:/Users/Dich/Desktop/VYZ/django-study/my_test/ulearn/templates/includes/'
-    df1 = average_salary_all.reset_index().to_html()  # зп для всех
+    df1 = average_salary_all.reset_index().to_html(index=False)  # зп для всех
     df2 = years_df.set_index('Год').rename(
-        columns={'name': 'vacancy_count'}).reset_index().to_html()  # кол-во вакансии
-    df3 = selected_salary_all.reset_index().to_html() # зп для профессии
-    df4 = vacancies_count_profession_by_year.to_html()  # выбранная вакансия
+        columns={'name': 'vacancy_count'}).reset_index().to_html(index=False)  # кол-во вакансии
+    df3 = selected_salary_all.reset_index().to_html(index=False) # зп для профессии
+    df4 = vacancies_count_profession_by_year.to_html(index=False)  # выбранная вакансия
     f1 = open(path + "demand_salary_all.html", "w")
     f1.write(df1)
     f1.close()

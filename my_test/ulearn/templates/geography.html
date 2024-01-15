@@ -18,24 +18,24 @@
       <div class="demand-container">
         <h1>Графики и таблицы востребованности профессий</h1>
         <div id="one">
-            <h2 class="demand-header">Динамика уровня зарплат по годам</h2>
+            <h2 class="demand-header">Динамика уровня зарплат по городам</h2>
             <img src="{% static 'img/figure1.png' %}">
-            {% include 'includes/demand_salary_all.html' %}
+            {% include 'includes/geo_salary_all.html' %}
         </div>
         <div id="two">
-            <h2 class="demand-header">Динамика количества вакансий по годам</h2>
+            <h2 class="demand-header">Динамика количества вакансий по городам</h2>
             <img src="{% static 'img/figure2.png' %}">
-            {% include 'includes/vacancy_count_all.html' %}
+            {% include 'includes/geo_count_all.html' %}
         </div>
         <div id="three">
-            <h2 class="demand-header">Динамика уровня зарплат по годам для выбранной профессии</h2>
+            <h2 class="demand-header">Динамика уровня зарплат по городам для выбранной профессии</h2>
             <img src="{% static 'img/figure3.png' %}">
-            {% include 'includes/demand_salary_prof.html' %}
+            {% include 'includes/geo_salary_prof.html' %}
         </div>
         <div id="four">
-            <h2 class="demand-header">Динамика количества вакансий по годам для выбранной профессии</h2>
+            <h2 class="demand-header">Динамика количества вакансий по городам для выбранной профессии</h2>
             <img src="{% static 'img/figure4.png' %}">
-            {% include 'includes/vacancy_count_prof.html' %}
+            {% include 'includes/geo_count_prof.html' %}
         </div>
     </div>
   </main>
