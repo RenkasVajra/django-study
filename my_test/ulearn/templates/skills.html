@@ -1,10 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
+{% load static %}
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    <link href="{% static 'css/table-styles.css'%}" rel="stylesheet">
+    <title>Специалист по информационной безопасности</title>
+  </head>
+  <body class="page">
+     {% include 'includes/themes.html' %}
+    <main class="main-content">
+      <div class="main-head">
+        <h1>ТОП-20 навыков по годам</h1>
+      </div>
+      <section class="hero">
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2015 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_top_20_by_2015.png' %}" width="840" height="680" alt="График динамики уровня зарплат по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/top_20_by_2015.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2016год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_top_20_by_2016.png' %}" width="840" height="680" alt="График динамики уровня зарплат по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/top_20_by_2016.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2017 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_top_20_by_2017.png' %}" width="840" height="680" alt="График динамики уровня зарплат по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/top_20_by_2017.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2018 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_top_20_by_2018.png' %}" width="840" height="680" alt="График динамики уровня зарплат по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/top_20_by_2018.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2019 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_top_20_by_2019.png' %}" width="840" height="680" alt="График динамики уровня зарплат по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/top_20_by_2019.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2020 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_top_20_by_2020.png' %}" width="840" height="680" alt="График динамики уровня зарплат по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/top_20_by_2020.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2021 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_top_20_by_2021.png' %}" width="840" height="680" alt="График динамики уровня зарплат по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/top_20_by_2021.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2022 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_top_20_by_2022.png' %}" width="840" height="680" alt="График динамики уровня зарплат по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/top_20_by_2022.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2023 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_top_20_by_2023.png' %}" width="840" height="680" alt="График динамики уровня зарплат по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/top_20_by_2023.html' %}
+          </div>
+        </div>
+      </section>
+        <h1>ТОП-20 навыков по годам для выбранной профессии</h1>
+      <section class="prof-skills">
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2016 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_prof_top_20_by_2016.png' %}" width="840" height="680" alt="График долей вакансий по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/prof_top_20_by_2016.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2017 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_prof_top_20_by_2017.png' %}" width="840" height="680" alt="График долей вакансий по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/prof_top_20_by_2017.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2018 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_prof_top_20_by_2018.png' %}" width="840" height="680" alt="График долей вакансий по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/prof_top_20_by_2018.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2019 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_prof_top_20_by_2019.png' %}" width="840" height="680" alt="График долей вакансий по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/prof_top_20_by_2019.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2020 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_prof_top_20_by_2020.png' %}" width="840" height="680" alt="График долей вакансий по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/prof_top_20_by_2020.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2021 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_prof_top_20_by_2021.png' %}" width="840" height="680" alt="График долей вакансий по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/prof_top_20_by_2021.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2022 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_prof_top_20_by_2022.png' %}" width="840" height="680" alt="График долей вакансий по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/prof_top_20_by_2022.html' %}
+          </div>
+        </div>
+        <div class="skills-container">
+          <div class="biba">
+            <h1>2023 год</h1>
+          </div>
+          <div class="graph">
+              <img src="{% static 'img/skills/graph_prof_top_20_by_2023.png' %}" width="840" height="680" alt="График долей вакансий по городам">
+          </div>
+          <div class="table">
+            {% include 'includes/skills-tables/prof_top_20_by_2023.html' %}
+          </div>
+        </div>
+      </section>
+    </main>
+      {% include 'includes/footer.html' %}
+  <script src="{% static 'js/script.js'%}"></script>
 </body>
 </html>

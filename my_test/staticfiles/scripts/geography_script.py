@@ -40,31 +40,31 @@ converted_df = converted_df[(converted_df.salary_from < 1000000) | (converted_df
 df_by_city = converted_df.groupby('area_name').agg({'average_salary': 'mean'})\
     .reset_index().dropna(subset=['average_salary']).sort_values('average_salary', ascending=False)
 df_by_city['average_salary'] = df_by_city['average_salary'].apply(math.floor).astype(int)
-df1 = df_by_city.head(20).to_html(index=False) # зп по городам
+df1 = df_by_city.rename({'area_name': 'Город', 'average_salary': 'Средняя зарплата'}).head(20).to_csv(index=False) # зп по городам
 df_by_city = df_by_city[(df_by_city.average_salary < 1000000)]
 
 count_all = converted_df.groupby('area_name').name.count().reset_index().sort_values(by='name', ascending=False)
-df2 = count_all.head(20).to_html(index=False) # кол-во вакансий по городам
+df2 = count_all.head(20).rename({'area_name': 'Город', 'name': 'Количество вакансий'}).to_csv(index=False) # кол-во вакансий по городам
 
 selected_df = converted_df[converted_df.name.str.contains(selected_profession, na=False, case=False)]
 
 selected_df_by_city = selected_df.groupby('area_name').agg({
 'average_salary': 'mean'
-}).reset_index().dropna(subset=['average_salary']).sort_values('average_salary', ascending=False)
-df3 = selected_df_by_city.head(20).to_html(index=False) # зп по городам для выбранной профессии
+}).reset_index().dropna(subset=['average_salary']).sort_values('average_salary', ascending=False).apply(math.floor).astype(int)
+df3 = selected_df_by_city.rename({'area_name': 'Город', 'average_salary': 'Средняя зарплата'}).head(20).to_csv(index=False) # зп по городам для выбранной профессии
 
 selected_count_all = selected_df.groupby('area_name').name.count().reset_index().sort_values(by='name', ascending=False)
-df4 = selected_count_all.head(20).to_html(index=False) # доля вакансий по городам для выбранной профессии
-path = 'C:/Users/Dich/Desktop/VYZ/django-study/my_test/ulearn/templates/includes/'
-f1 = open(path + "geo_salary_all.html", "w", encoding='utf-8')
+df4 = selected_count_all.rename({'area_name': 'Город', 'name': 'Количество вакансий'}).head(20).to_csv(index=False) # доля вакансий по городам для выбранной профессии
+path = 'C:/Users/Dich/Desktop/VYZ/django-study/my_test/staticfiles/geography/'
+f1 = open(path + "geo_salary_all.csv", "w", encoding='utf-8')
 f1.write(df1)
 f1.close()
-f2 = open(path + "geo_count_all.html", "w", encoding='utf-8')
+f2 = open(path + "geo_count_all.csv", "w", encoding='utf-8')
 f2.write(df2)
 f2.close()
-f3 = open(path + "geo_salary_prof.html", "w", encoding='utf-8')
+f3 = open(path + "geo_salary_prof.csv", "w", encoding='utf-8')
 f3.write(df3)
 f3.close()
-f4 = open(path + "geo_count_prof.html", "w", encoding='utf-8')
+f4 = open(path + "geo_count_prof.csv", "w", encoding='utf-8')
 f4.write(df4)
 f4.close()

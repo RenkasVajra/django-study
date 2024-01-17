@@ -1,15 +1,7 @@
 from django.db import models
-
-
-class SiteUser(models.Model):
-    first_name = models.CharField('Имя', max_length=255)
-    last_name = models.CharField('Фамилия', max_length=255)
-
-    def get_name(self):
-        return f'{self.last_name} {self.first_name}'
-
-    class Meta:
-        db_table = 'site_users'
+import csv
+import pandas as pd
+import json
 
 
 class Vacancy(models.Model):
@@ -25,3 +17,33 @@ class Vacancy(models.Model):
         verbose_name = 'Вакансия'
         verbose_name_plural = 'Вакансии'
         db_table = 'vacancies'
+
+
+class Demand(models.Model):
+    title = models.CharField(verbose_name='Название', max_length=255, null=True)
+    image = models.ImageField(verbose_name='Изображение',upload_to='staticfiles', null=True)
+    table = models.FileField(verbose_name='Таблица',max_length=3000, null=True)
+
+    def display_text_file(self):
+        df = pd.read_csv(self.table.path, encoding='utf-8')
+        json_records = df.to_html()
+        return json_records
+    class Meta:
+        verbose_name = 'Востребованность'
+        verbose_name_plural = 'Востребованности'
+        db_table = 'demand'
+
+
+class Geography(models.Model):
+    title = models.CharField(verbose_name='Название', max_length=255, null=True)
+    image = models.ImageField(verbose_name='Изображение',upload_to='staticfiles', null=True)
+    table = models.FileField(verbose_name='Таблица',max_length=3000, null=True)
+
+    def display_text_file(self):
+        df = pd.read_csv(self.table.path, encoding='utf-8')
+        json_records = df.to_html()
+        return json_records
+    class Meta:
+        verbose_name = 'География'
+        verbose_name_plural = 'География'
+        db_table = 'geography'

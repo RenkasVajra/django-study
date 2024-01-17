@@ -272,7 +272,7 @@ body {
 /* main */
 
 .main-content {
-  width: 1170px;
+  width: 1200px;
   margin: 0 auto;
   padding: 0 55px;
 }
@@ -1093,13 +1093,19 @@ body {
 }
 
 #one {
- border-style: solid;
- border-width:5px;
- border-color: blue;
- box-sizing: border-box;
- width: 900px;
- margin:5px;
- padding:5px;
+     display: block;
+     list-style: none;
+     margin: 0 auto;
+     border-style: solid;
+     border-width:5px;
+     border-color: #00C6BD;
+     box-sizing: border-box;
+     width: 1200px;
+     margin:5px;
+     padding:5px;
+     justify-content: center;
+     padding-left: 40px;
+     margin-bottom: 40px;
 }
 
 #two  {
@@ -1135,4 +1141,105 @@ body {
 .demand-header {
     margin: 0 auto;
     text-align: center;
+}
+
+.dataframe {
+    width: 100%;
+    max-width: 840px; /* по ширине контейнера */
+    color: #fff;
+    text-align: center;
+    background-color: #343a40;
+    border: 0;
+    border-collapse: collapse;
+}
+
+.dataframe tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dataframe td:hover{
+    background-color: #5a5a5f;
+}
+
+.dataframe td:active{
+    background-color: #ffffff;
+    color: #3bc1a0;
+}
+
+.dataframe thead th {
+    color: #fff;
+    background-color: #343a40;
+    border: none;
+}
+
+.dataframe td {
+    border: none;
+}
+
+tr[style] {
+    text-align: center !important;
+}
+
+.vacancies {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.vacancies li {
+  display: flex;
+  flex-direction: column;
+  margin-left: 175px;
+  border: 3px solid #3bc1a0;
+  margin-bottom: 10px;
+}
+
+.demand-image {
+    border: 3px solid #3bc1a0;
+    margin-top: 20px;
+}
+
+.skills-container {
+    width: 1160px;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    margin-bottom: 40px;
+    padding: 5px;
+    background-image: url("../img/background-skills.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.graph {
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 25px;
+}
+
+.table {
+    width: 700px;
+    display: flex;
+    margin: 0 auto;
+    padding-bottom: 15px;
+}
+
+.biba {
+    width: 200px;
+    display: flex;
+    margin: 0 auto;
+}
+.main-head {
+    width: 400px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.default-auth {
+    display: flex;
+    flew-direction: row;
+
 }

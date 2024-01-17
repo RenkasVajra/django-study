@@ -49,23 +49,23 @@ def demand():
     vacancies_all_count = years_df['name'].tolist()
     vacancies_count_profession_by_year = selected_profession_data.groupby('Год')['name'].count().reset_index()
     vacancies_count_profession_by_year = vacancies_count_profession_by_year.rename(
-        columns={'name': 'count'})  # кол-во вакансий по годам для профессии
-    path = 'C:/Users/Dich/Desktop/VYZ/django-study/my_test/ulearn/templates/includes/'
-    df1 = average_salary_all.reset_index().to_html(index=False)  # зп для всех
+        columns={'name': 'count', 'average_sal': 'Средняя зарплата'})  # кол-во вакансий по годам для профессии
+    path = 'C:/Users/Dich/Desktop/VYZ/django-study/my_test/staticfiles/demand/'
+    df1 = average_salary_all.reset_index().to_csv(index=False)  # зп для всех
     df2 = years_df.set_index('Год').rename(
-        columns={'name': 'vacancy_count'}).reset_index().to_html(index=False)  # кол-во вакансии
-    df3 = selected_salary_all.reset_index().to_html(index=False) # зп для профессии
-    df4 = vacancies_count_profession_by_year.to_html(index=False)  # выбранная вакансия
-    f1 = open(path + "demand_salary_all.html", "w")
+        columns={'name': 'Количество вакансий'}).reset_index().to_csv(index=False)   # кол-во вакансии
+    df3 = selected_salary_all.rename({'average_sal': 'Средняя зарплата'}).reset_index().to_csv(index=False)  # зп для профессии
+    df4 = vacancies_count_profession_by_year.rename({'count': 'Количество вакансий'}).to_csv(index=False)   # выбранная вакансия
+    f1 = open(path + "demand_salary_all.csv", "w", encoding='utf-8')
     f1.write(df1)
     f1.close()
-    f2 = open(path + "vacancy_count_all.html", "w")
+    f2 = open(path + "vacancy_count_all.csv", "w", encoding='utf-8')
     f2.write(df2)
     f2.close()
-    f3 = open(path + "demand_salary_prof.html", "w")
+    f3 = open(path + "demand_salary_prof.csv", "w", encoding='utf-8')
     f3.write(df3)
     f3.close()
-    f4 = open(path + "vacancy_count_prof.html", "w")
+    f4 = open(path + "vacancy_count_prof.csv", "w", encoding='utf-8')
     f4.write(df4)
     f4.close()
     return

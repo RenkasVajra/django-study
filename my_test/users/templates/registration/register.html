@@ -1,0 +1,14 @@
+<form method="post" action="{% url 'registration_view' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Register</button>
+</form>
+{% if user.is_authenticated %}
+  <p>Welcome, {{ user.username }}!</p>
+  <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+  </form>
+{% else %}
+  <p>You are not logged in. <a href="{% url 'login_view' %}">Login</a></p>
+{% endif %}

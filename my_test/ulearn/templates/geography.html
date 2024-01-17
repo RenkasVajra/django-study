@@ -2,6 +2,22 @@
 {% load static %}
 <html lang="ru">
   <head>
+      <style>
+            .table-container {
+                display: inline-block;
+                width: 1200px;
+                justify-content: center;
+                margin-left: 130px;
+                margin-top: 25px;
+            }
+            .table {
+                display: block;
+                width: 1000px;
+                background-color: black;
+                margin: 0 auto;
+                justify-content: center;
+            }
+        </style>
     <meta charset="utf-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,29 +31,19 @@
       <section class="hero">
         <h1>Специалист по информационной безопасности</h1>
       </section>
-      <div class="demand-container">
-        <h1>Графики и таблицы востребованности профессий</h1>
-        <div id="one">
-            <h2 class="demand-header">Динамика уровня зарплат по городам</h2>
-            <img src="{% static 'img/figure1.png' %}">
-            {% include 'includes/geo_salary_all.html' %}
-        </div>
-        <div id="two">
-            <h2 class="demand-header">Динамика количества вакансий по городам</h2>
-            <img src="{% static 'img/figure2.png' %}">
-            {% include 'includes/geo_count_all.html' %}
-        </div>
-        <div id="three">
-            <h2 class="demand-header">Динамика уровня зарплат по городам для выбранной профессии</h2>
-            <img src="{% static 'img/figure3.png' %}">
-            {% include 'includes/geo_salary_prof.html' %}
-        </div>
-        <div id="four">
-            <h2 class="demand-header">Динамика количества вакансий по городам для выбранной профессии</h2>
-            <img src="{% static 'img/figure4.png' %}">
-            {% include 'includes/geo_count_prof.html' %}
-        </div>
-    </div>
+      {% for d in geography %}
+      <div id="one">
+            <h2 class="demand-header">{{d.title}}</h2>
+
+            <img class="demand-image" src="{{d.image.url}}" width="1100px">
+          <div class="table-container">
+              <table class="table">
+                  {{d.display_text_file | safe}}
+              </table>
+          </div>
+      </div>
+      {% endfor %}
+
   </main>
       {% include 'includes/footer.html' %}
     <script src="{% static 'js/script.js' %}"></script>

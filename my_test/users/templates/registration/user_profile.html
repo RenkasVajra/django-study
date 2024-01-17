@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>Информация о пользователе</h1>
+    <p>Добро пожаловать, {{ user.username }}!</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Последнее посещение сайта: {{ user.last_login }}</p>
+    <p>Дата регистрации: {{ user.date_joined }}</p>
+    <a href="{% url 'home' %}">Go to Home</a>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

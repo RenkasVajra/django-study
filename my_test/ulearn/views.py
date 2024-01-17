@@ -1,19 +1,28 @@
 import requests
 from datetime import datetime, timedelta
 from django.shortcuts import render
-from .models import Vacancy
+from .models import Vacancy, Demand, Geography
 import json
+import re
+import pandas as pd
+from my_test import settings
+from django.core.files import File as DjangoFile
+from sorl.thumbnail import get_thumbnail
+from sorl.thumbnail import delete
+
 
 def index_page(request):
     return render(request, 'index.html')
 
 
 def demand(request):
-    return render(request, 'demand.html', )
+    demanded = Demand.objects.all()
+    return render(request, 'demand.html', context={'demand': demanded})
 
 
 def geography(request):
-    return render(request, 'geography.html', )
+    geographies = Geography.objects.all()
+    return render(request, 'geography.html', context={'geography': geographies})
 
 
 def skills(request):
@@ -74,8 +83,7 @@ def last_vacancies(request):
         vacancy.published_at = datetime.strptime(vacancy_data['published_at'], '%Y-%m-%dT%H:%M:%S%z')
 
         vacancies_list.append(vacancy)
-        #print(vacancy.title, vacancy.salary)
-    print(vacancies_list)
+
     for i in vacancies_list:
         if Vacancy.objects.filter(
                 title=i.title,
@@ -99,7 +107,7 @@ def get_vacancy_description(vacancy_url):
     response = requests.get(vacancy_url)
     vacancy_data = response.json()
 
-    return vacancy_data['description']
+    return re.sub(r'<[^>]+>', '', vacancy_data['description']).replace('&quot;', '.')
 
 
 def get_vacancy_skills(vacancy_url):

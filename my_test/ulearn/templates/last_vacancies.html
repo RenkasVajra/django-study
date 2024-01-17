@@ -6,29 +6,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-      <title>Специалист по ИБ</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Специалист по ИБ</title>
   </head>
   <body class="page">
   {% include 'includes/themes.html' %}
-
+  <main class="main-content">
       <section class="hero">
-        <h1>Последние вакансии</h1>
+        <h1>Специалист по информационной безопасности</h1>
       </section>
-    <ul>
+          <ul class="vacancies">
         {% for vacancy in last_vacancies %}
         <li>
             <h2>{{ vacancy.title }}</h2>
-            <p>{{ vacancy.description }}</p>
-            <p>{{ vacancy.skills }}</p>
-            <p>{{ vacancy.company }}</p>
-            <p>{{ vacancy.salary}}</p>
-            <p>{{ vacancy.area_name }}</p>
-            <p>{{ vacancy.published_at }}</p>
+            <p><b>Описание</b>: {{ vacancy.description }}</p>
+            <p><b>Навыки</b>: {{ vacancy.skills }}</p>
+            <p><b>Компания</b>: {{ vacancy.company }}</p>
+            <p><b>Зарплата</b>: {{ vacancy.salary}}</p>
+            <p><b>Город</b>: {{ vacancy.area_name }}</p>
+            <p><b>Дата публикации</b>: {{ vacancy.published_at }}</p>
         </li>
         {% endfor %}
     </ul>
+  </main>
       {% include 'includes/footer.html' %}
-    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/script.js'%}"></script>
 </body>
 </html>
