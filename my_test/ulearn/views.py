@@ -4,11 +4,6 @@ from django.shortcuts import render
 from .models import Vacancy, Demand, Geography
 import json
 import re
-import pandas as pd
-from my_test import settings
-from django.core.files import File as DjangoFile
-from sorl.thumbnail import get_thumbnail
-from sorl.thumbnail import delete
 
 
 def index_page(request):
