@@ -24,3 +24,6 @@ PyJWT==1.7.1
 xlmx
 bs4
 requests
+pandas
+matplotlib
+numpy
