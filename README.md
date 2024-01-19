@@ -18,7 +18,6 @@ http://www.issecurityaoo.ru/
 - [Django](https://www.djangoproject.com/)
 - [Nginx](https://nginx.org/)
 - [Reg.ru](https://www.reg.ru/)
-- [GitHub Actions](https://github.com/features/actions)
 
 ## Установка проекта 
 
