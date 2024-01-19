@@ -1,7 +1,7 @@
 # issecurityaoo
 
 ### Проект доступен по адресу:  
-[http://84.252.134.130/](http://www.issecurityaoo.ru/)
+http://www.issecurityaoo.ru/
 
 
 ## Описание
