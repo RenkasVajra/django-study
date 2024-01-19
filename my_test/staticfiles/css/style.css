@@ -209,10 +209,12 @@ body {
 }
 
 .logo {
-  width: 64px;
+  width: 122px;
   height: 68px;
   margin: 0;
-  margin-right: auto;
+  padding-top: 20px;
+  margin-right: 0;
+  margin-left: auto;
 }
 
 .site-navigation {
@@ -278,6 +280,10 @@ body {
 }
 
 .hero {
+    width: 300px;
+    display: flex;
+    margin: 0 auto;
+    margin-left: 150px;
   margin-bottom: 120px;
 }
 
@@ -1193,6 +1199,7 @@ tr[style] {
   margin-left: 175px;
   border: 3px solid #3bc1a0;
   margin-bottom: 10px;
+  padding: 5px;
 }
 
 .demand-image {
@@ -1228,18 +1235,44 @@ tr[style] {
 }
 
 .biba {
-    width: 200px;
+    width: 300px;
     display: flex;
     margin: 0 auto;
 }
 .main-head {
-    width: 400px;
+    width: 800px;
     display: flex;
     margin: 0 auto;
+    margin-left: 50px;
+    font-size: 36px;
+    margin-bottom: 100px;
 }
 
 .default-auth {
     display: flex;
     flew-direction: row;
-
+    margin-left: 30px;
 }
+
+.user-exit {
+    display: block;
+    color: #163152;
+    margin-left: 0px;
+    text-decoration: none;
+}
+
+.user-exit:hover {
+  opacity: 0.5;
+}
+
+.user-exit:active {
+  opacity: 0.3;
+}
+
+.default-auth-item {
+    margin-bottom: 5px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+

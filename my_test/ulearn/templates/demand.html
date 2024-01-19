@@ -13,7 +13,6 @@
             .table {
                 display: block;
                 width: 1000px;
-                background-color: black;
                 margin: 0 auto;
                 justify-content: center;
             }
@@ -28,9 +27,9 @@
   <body class="page">
   {% include 'includes/themes.html' %}
   <main class="main-content">
-      <section class="hero">
-        <h1>Специалист по информационной безопасности</h1>
-      </section>
+      <div class="main-head">
+        <h1>Востребованность</h1>
+      </div>
       {% for d in demand %}
       <div id="one">
             <h2 class="demand-header">{{d.title}}</h2>

@@ -40,21 +40,22 @@ converted_df = converted_df[(converted_df.salary_from < 1000000) | (converted_df
 df_by_city = converted_df.groupby('area_name').agg({'average_salary': 'mean'})\
     .reset_index().dropna(subset=['average_salary']).sort_values('average_salary', ascending=False)
 df_by_city['average_salary'] = df_by_city['average_salary'].apply(math.floor).astype(int)
-df1 = df_by_city.rename({'area_name': 'Город', 'average_salary': 'Средняя зарплата'}).head(20).to_csv(index=False) # зп по городам
+df1 = df_by_city.rename(columns={'area_name': 'Город', 'average_salary': 'Средняя зарплата'}).head(20).to_csv(index=False) # зп по городам
 df_by_city = df_by_city[(df_by_city.average_salary < 1000000)]
 
 count_all = converted_df.groupby('area_name').name.count().reset_index().sort_values(by='name', ascending=False)
-df2 = count_all.head(20).rename({'area_name': 'Город', 'name': 'Количество вакансий'}).to_csv(index=False) # кол-во вакансий по городам
+df2 = count_all.head(20).rename(columns={'area_name': 'Город', 'name': 'Количество вакансий'}).to_csv(index=False) # кол-во вакансий по городам
 
 selected_df = converted_df[converted_df.name.str.contains(selected_profession, na=False, case=False)]
 
 selected_df_by_city = selected_df.groupby('area_name').agg({
-'average_salary': 'mean'
-}).reset_index().dropna(subset=['average_salary']).sort_values('average_salary', ascending=False).apply(math.floor).astype(int)
-df3 = selected_df_by_city.rename({'area_name': 'Город', 'average_salary': 'Средняя зарплата'}).head(20).to_csv(index=False) # зп по городам для выбранной профессии
+    'average_salary': 'mean'
+    }).reset_index().dropna(subset=['average_salary']).sort_values('average_salary', ascending=False)
+selected_df_by_city['average_salary'] = selected_df_by_city['average_salary'].apply(math.floor).astype(int)
+df3 = selected_df_by_city.rename(columns={'area_name': 'Город', 'average_salary': 'Средняя зарплата'}).head(20).to_csv(index=False) # зп по городам для выбранной профессии
 
 selected_count_all = selected_df.groupby('area_name').name.count().reset_index().sort_values(by='name', ascending=False)
-df4 = selected_count_all.rename({'area_name': 'Город', 'name': 'Количество вакансий'}).head(20).to_csv(index=False) # доля вакансий по городам для выбранной профессии
+df4 = selected_count_all.rename(columns={'area_name': 'Город', 'name': 'Количество вакансий'}).head(20).to_csv(index=False) # доля вакансий по городам для выбранной профессии
 path = 'C:/Users/Dich/Desktop/VYZ/django-study/my_test/staticfiles/geography/'
 f1 = open(path + "geo_salary_all.csv", "w", encoding='utf-8')
 f1.write(df1)

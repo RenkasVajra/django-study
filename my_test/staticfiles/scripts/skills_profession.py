@@ -27,7 +27,7 @@ def creating_skills_for_years(data, years_list):
             continue
         top_skills = pd.DataFrame({'Навык': years_skills_list.index, 'Количество': years_skills_list.values})
         creating_plot(top_skills, str(year))
-        creating_html_tables(str(year), top_skills.to_html(index=False))
+        creating_csv_tables(str(year), top_skills.to_csv(index=False))
     return
 
 
@@ -42,8 +42,8 @@ def creating_plot(df, year):
     return
 
 
-def creating_html_tables(year, table):
-    f1 = open(PATH + f"skills/tables/prof_top_20_by_{year}.html", "w", encoding='utf-8')
+def creating_csv_tables(year, table):
+    f1 = open(PATH + f"skills/tables/prof_top_20_by_{year}.csv", "w", encoding='utf-8')
     f1.write(table)
     f1.close()
     return

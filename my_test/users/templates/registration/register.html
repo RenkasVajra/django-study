@@ -1,14 +1,65 @@
-<form method="post" action="{% url 'registration_view' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Register</button>
-</form>
-{% if user.is_authenticated %}
-  <p>Welcome, {{ user.username }}!</p>
-  <form method="post" action="{% url 'logout' %}">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <link href="{% static 'css/login-styles2.css'%}" rel="stylesheet">
+    <title>Вход в систему</title>
+</head>
+<body>
+<div class="login-box">
+  <h2>Регистрация</h2>
+  <form method="post" action="{% url 'registration_view' %}">
+      {% csrf_token %}
+    <div class="user-box {% if form.username.errors %}error{% endif %}">
+        {% for error in form.username.errors %}
+            <div class="error"><p class="error-message">{{ error }}</p></div>
+        {% endfor %}
+      <input type="text" name="username" maxlength="128" autofocus required id="id_username">
+      <label for="id_username">Username:</label>
+    </div>
+    <div class="user-box {% if form.email.errors %}error{% endif %}">
+        {% for error in form.email.errors %}
+            <div class="error"><p class="error-message">{{ error }}</p></div>
+        {% endfor %}
+        <input type="email" name="email" maxlength="254" required id="id_email">
+        <label for="id_email">Email:</label>
+    </div>
+      <div class="user-box groups {% if form.group.errors %}error{% endif %}">
+      {% for error in form.group.errors %}
+            <div class="error"><p class="error-message">{{ error }}</p></div>
+      {% endfor %}
+      <div>
+        <select name="group" required id="id_group">
+            <option value="" selected>---------</option>
+            <option value="1">Ordinary user</option>
+        </select>
+      </div>
+        <label for="id_group">Группа пользователей:</label>
+    </div>
+    <div class="user-box {% if form.password1.errors %}error{% endif %}">
+        {% for error in form.password1.errors %}
+            <div class="error"><p class="error-message">{{ error }}</p></div>
+        {% endfor %}
+        <input type="password" name="password1" autocomplete="new-password" required id="id_password1">
+        <label for="id_password1">Password:</label>
+    </div>
+    <div class="user-box {% if form.password2.errors %}error{% endif %}">
+        {% for error in form.password2.errors %}
+            <div class="error"><p class="error-message">{{ error }}</p></div>
+        {% endfor %}
+        <input type="password" name="password2" autocomplete="new-password" required id="id_password2">
+        <label for="id_password2">Повторите пароль:</label>
+    </div>
+    <a href="{% url 'registration_view' %}" onclick="this.closest('form').submit(); return false;">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Зарегистрироваться
+    </a>
+      <a href="{% url 'login_view' %}">Уже зарегистрированы?</a>
   </form>
-{% else %}
-  <p>You are not logged in. <a href="{% url 'login_view' %}">Login</a></p>
-{% endif %}
+</div>
+</body>
+</html>

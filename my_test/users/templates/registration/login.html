@@ -1,6 +1,36 @@
-<form method="post" action="{% url 'login_view' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
-<a href="{% url 'registration_view' %}">Go to Registration</a>
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <link href="{% static 'css/login-styles2.css' %}" rel="stylesheet">
+    <title>Вход в аккаунт</title>
+</head>
+<body>
+  {% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+  {% endif %}
+  <div class="login-box">
+    <h2>Вход в систему</h2>
+    <form method="post" action="{% url 'login_view' %}">
+        {% csrf_token %}
+      <div class="user-box">
+        <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="128" required="" id="id_username">
+        <label for="id_username">Username</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+        <label for="id_password">Password</label>
+      </div>
+      <a href="{% url 'login_view' %}" onclick="this.closest('form').submit(); return false;">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Войти
+      </a>
+      <a href="{% url 'registration_view' %}">Перейти к регистрации</a>
+    </form>
+  </div>
+</body>
+</html>

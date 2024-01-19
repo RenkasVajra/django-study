@@ -1,20 +1,36 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="{% static 'css/user-styles1.css'%}" rel="stylesheet">
     <title>User Profile</title>
 </head>
 <body>
-    <h1>Информация о пользователе</h1>
+<article>
+    <h1>Кабинет пользователя</h1>
+</article>
+<div class="info">
+    <h1>Информация о пользователе:</h1>
     <p>Добро пожаловать, {{ user.username }}!</p>
     <p>Email: {{ user.email }}</p>
-    <p>Последнее посещение сайта: {{ user.last_login }}</p>
-    <p>Дата регистрации: {{ user.date_joined }}</p>
-    <a href="{% url 'home' %}">Go to Home</a>
-    <form action="{% url 'logout' %}" method="post">
+    <p>Последнее посещение сайта: {{ user.last_login }} по гринвичу</p>
+    <p>Дата регистрации: {{ user.date_joined }} по гринвичу</p>
+    <article>
+        <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
-        <button type="submit">Logout</button>
+        <button type="submit">Выйти из профиля</button>
     </form>
+        <form action="{% url 'home' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Перейти на главную</button>
+        </form>
+        </article>
+    </div>
 </body>
+<footer></footer>
 </html>

@@ -1,7 +1,5 @@
 from django.db import models
-import csv
 import pandas as pd
-import json
 
 
 class Vacancy(models.Model):
@@ -28,6 +26,7 @@ class Demand(models.Model):
         df = pd.read_csv(self.table.path, encoding='utf-8')
         json_records = df.to_html()
         return json_records
+
     class Meta:
         verbose_name = 'Востребованность'
         verbose_name_plural = 'Востребованности'
@@ -43,7 +42,24 @@ class Geography(models.Model):
         df = pd.read_csv(self.table.path, encoding='utf-8')
         json_records = df.to_html()
         return json_records
+
     class Meta:
         verbose_name = 'География'
         verbose_name_plural = 'География'
         db_table = 'geography'
+
+
+class Skills(models.Model):
+    title = models.CharField(verbose_name='Название', max_length=255, null=True)
+    image = models.ImageField(verbose_name='Изображение',upload_to='staticfiles', null=True)
+    table = models.FileField(verbose_name='Таблица',max_length=3000, null=True)
+
+    def display_text_file(self):
+        df = pd.read_csv(self.table.path, encoding='utf-8')
+        json_records = df.to_html()
+        return json_records
+
+    class Meta:
+        verbose_name = 'Навыки'
+        verbose_name_plural = 'Навыки'
+        db_table = 'skills'

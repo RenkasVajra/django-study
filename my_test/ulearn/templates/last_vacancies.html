@@ -12,12 +12,12 @@
   <body class="page">
   {% include 'includes/themes.html' %}
   <main class="main-content">
-      <section class="hero">
-        <h1>Специалист по информационной безопасности</h1>
-      </section>
+      <div class="main-head">
+        <h1>Последние вакансии</h1>
+      </div>
           <ul class="vacancies">
         {% for vacancy in last_vacancies %}
-        <li>
+        <li class="vacancies-item">
             <h2>{{ vacancy.title }}</h2>
             <p><b>Описание</b>: {{ vacancy.description }}</p>
             <p><b>Навыки</b>: {{ vacancy.skills }}</p>

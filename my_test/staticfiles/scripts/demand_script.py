@@ -51,11 +51,11 @@ def demand():
     vacancies_count_profession_by_year = vacancies_count_profession_by_year.rename(
         columns={'name': 'count', 'average_sal': 'Средняя зарплата'})  # кол-во вакансий по годам для профессии
     path = 'C:/Users/Dich/Desktop/VYZ/django-study/my_test/staticfiles/demand/'
-    df1 = average_salary_all.reset_index().to_csv(index=False)  # зп для всех
+    df1 = average_salary_all.rename(columns={'average_sal': 'Средняя зарплата'}).reset_index().to_csv(index=False)  # зп для всех
     df2 = years_df.set_index('Год').rename(
         columns={'name': 'Количество вакансий'}).reset_index().to_csv(index=False)   # кол-во вакансии
-    df3 = selected_salary_all.rename({'average_sal': 'Средняя зарплата'}).reset_index().to_csv(index=False)  # зп для профессии
-    df4 = vacancies_count_profession_by_year.rename({'count': 'Количество вакансий'}).to_csv(index=False)   # выбранная вакансия
+    df3 = selected_salary_all.rename(columns={'average_sal': 'Средняя зарплата'}).reset_index().to_csv(index=False)  # зп для профессии
+    df4 = vacancies_count_profession_by_year.rename(columns={'count': 'Количество вакансий'}).to_csv(index=False)   # выбранная вакансия
     f1 = open(path + "demand_salary_all.csv", "w", encoding='utf-8')
     f1.write(df1)
     f1.close()

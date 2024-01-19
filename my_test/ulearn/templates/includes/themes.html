@@ -1,4 +1,6 @@
-    <header class="page-header">
+{% load static %}
+<header class="page-header">
+
       <div class="services">
         <div class="services-content">
           <p>Специалист по информационной безопасности</p>
@@ -21,21 +23,29 @@
               <button class="font-button-serif" type="button">А</button>
             </li>
           </ul>
+
         </section>
+          <p class="logo">
+            <img src="{% static 'img/logo.png' %}" width="124" height="68" alt="Логотип яхт-клуба Yacht Club">
+          </p>
       </div>
         <div class="default-auth">
+
             {%if request.user.is_authenticated %}
-            <div class="default-auth">
-              <span>Hi {{ request.user.username | title }}</span>
+            <a class="signin" href="{% url 'user_profile' %}">
+                <img src="{% static 'img/user-icon.png' %}" width="40" height="40" alt="Кабинет пользователя">
+            </a>
+            <div class="default-auth-item">
+              <span>Привет, {{ request.user.username | title }}!</span>
               <form action="{% url 'logout' %}" method="post">
-                  {% csrf_token %}
-              <button type="submit">Logout</button>
+              {% csrf_token %}
+              <a class="user-exit" href="{% url 'logout' %}" type="submit">Выход</a>
               </form>
             </div>
             {%else%}
-            <div class="default-auth">
-              <a href="{% url 'login' %}">Login</a>
-              <a href="{% url 'registration_view' %}">Register</a>
+            <div class="default-auth-item">
+              <a class="user-exit" href="{% url 'login' %}">Вход</a>
+              <a class="user-exit" href="{% url 'registration_view' %}">Регистрация</a>
             </div>
             {%endif%}
 
