@@ -45,12 +45,12 @@ https://www.issecurityaoo.ru/
   `ALLOWED_HOSTS = ['issecurityaoo.ru', 'www.issecurityaoo.ru', '127.0.0.1', 'localhost']`
 
 - В корневой директории сайта(issecurityaoo.ru) создайте файл passenger_wsgi.py и внесите следующий код: \
-  `import os, sys
-  sys.path.insert(0, '/var/www/u2439865/data/www/issecurityaoo.ru/my_test')
-  sys.path.insert(1, '/var/www/u2439865/data/djangoenv/lib/python3.9/site-packages')
-  os.environ['DJANGO_SETTINGS_MODULE'] = 'my_test.settings'
-  from django.core.wsgi import get_wsgi_application
-  application = get_wsgi_application()
-    где u2439865 - логин хоста,
-    issecurityaoo.ru - название директории сайта,
-    my_test - головное приложение`
+  `import os, sys`
+  `  sys.path.insert(0, '/var/www/u2439865/data/www/issecurityaoo.ru/my_test')`
+  `  sys.path.insert(1, '/var/www/u2439865/data/djangoenv/lib/python3.9/site-packages')`
+  `  os.environ['DJANGO_SETTINGS_MODULE'] = 'my_test.settings'`
+  `  from django.core.wsgi import get_wsgi_application`
+  `  application = get_wsgi_application()`
+  `где u2439865 - логин хоста,`
+  `issecurityaoo.ru - название директории сайта,`
+  `my_test - головное приложение`
